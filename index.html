@@ -308,6 +308,89 @@
 <!-- Accordion List (長條式索引表單) -->
 <div class="accordion-container" id="accordionList">
 
+  <!-- Item 0: Comparison Table (全陣容規格比較表，置頂並預設開啟) -->
+  <div class="accordion-item open" id="item-compare">
+    <button class="accordion-header" type="button" aria-expanded="true">
+      <div class="header-left">
+        <span class="header-swatch" style="background:#888;"></span>
+        <div class="header-titles">
+          <span class="header-name">全陣容規格比較表</span>
+          <span class="header-desc">五款機型橫向完整參數對比</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <span class="header-tag">五款對比</span>
+        <span class="chevron-icon">▼</span>
+      </div>
+    </button>
+    <div class="accordion-content">
+      <div class="model-head">
+        <div>
+          <div class="model-tag"><span class="dot" style="background:#888;"></span>全陣容橫向比對</div>
+          <h2 class="display">五款機型完整規格比較</h2>
+        </div>
+        <p class="tagline">官方建議售價與核心硬體規格彙整。</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th class="th-e17">iPhone 17e</th>
+              <th class="th-17">iPhone 17</th>
+              <th class="th-air">iPhone Air</th>
+              <th class="th-pro">iPhone 18 Pro</th>
+              <th class="th-promax">iPhone 18 Pro Max</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>螢幕尺寸</th>
+              <td class="mono">6.1"</td>
+              <td class="mono">6.3"</td>
+              <td class="mono">6.5"</td>
+              <td class="mono">6.3"</td>
+              <td class="mono">6.9"</td>
+            </tr>
+            <tr>
+              <th>更新率</th>
+              <td class="mono">60Hz</td>
+              <td class="mono">120Hz</td>
+              <td class="mono">120Hz</td>
+              <td class="mono">120Hz (動態島縮小)</td>
+              <td class="mono">120Hz (動態島縮小)</td>
+            </tr>
+            <tr>
+              <th>晶片</th>
+              <td>A19</td>
+              <td>A19</td>
+              <td>A19 Pro</td>
+              <td>A20 Pro (2nm)</td>
+              <td>A20 Pro (2nm)</td>
+            </tr>
+            <tr>
+              <th>相機</th>
+              <td>4800萬單鏡頭</td>
+              <td>4800萬雙鏡頭</td>
+              <td>4800萬單鏡頭</td>
+              <td>三鏡頭 (物理可變光圈)</td>
+              <td>三鏡頭 (物理可變光圈)</td>
+            </tr>
+            <tr>
+              <th>起售價</th>
+              <td class="mono">NT$21,900</td>
+              <td class="mono">NT$29,900</td>
+              <td class="mono">NT$36,900</td>
+              <td class="mono">NT$44,900</td>
+              <td class="mono">NT$49,900</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
   <!-- Item 1: iPhone 17e -->
   <div class="accordion-item" id="item-17e">
     <button class="accordion-header" type="button" aria-expanded="false">
@@ -690,89 +773,6 @@
               <td data-label="聯名卡 2% 後" class="num final">NT$53,850</td>
               <td data-label="+黑鑽卡 2% 疊加後" class="num combo">NT$52,804</td>
               <td data-label="共省下"><span class="save-tag">省 NT$4,096</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- Item 6: Comparison Table -->
-  <div class="accordion-item" id="item-compare">
-    <button class="accordion-header" type="button" aria-expanded="false">
-      <div class="header-left">
-        <span class="header-swatch" style="background:#888;"></span>
-        <div class="header-titles">
-          <span class="header-name">全陣容規格比較表</span>
-          <span class="header-desc">五款機型橫向完整參數對比</span>
-        </div>
-      </div>
-      <div class="header-right">
-        <span class="header-tag">五款對比</span>
-        <span class="chevron-icon">▼</span>
-      </div>
-    </button>
-    <div class="accordion-content">
-      <div class="model-head">
-        <div>
-          <div class="model-tag"><span class="dot" style="background:#888;"></span>全陣容橫向比對</div>
-          <h2 class="display">五款機型完整規格比較</h2>
-        </div>
-        <p class="tagline">官方建議售價與核心硬體規格彙整。</p>
-      </div>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th class="th-e17">iPhone 17e</th>
-              <th class="th-17">iPhone 17</th>
-              <th class="th-air">iPhone Air</th>
-              <th class="th-pro">iPhone 18 Pro</th>
-              <th class="th-promax">iPhone 18 Pro Max</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>螢幕尺寸</th>
-              <td class="mono">6.1"</td>
-              <td class="mono">6.3"</td>
-              <td class="mono">6.5"</td>
-              <td class="mono">6.3"</td>
-              <td class="mono">6.9"</td>
-            </tr>
-            <tr>
-              <th>更新率</th>
-              <td class="mono">60Hz</td>
-              <td class="mono">120Hz</td>
-              <td class="mono">120Hz</td>
-              <td class="mono">120Hz (動態島縮小)</td>
-              <td class="mono">120Hz (動態島縮小)</td>
-            </tr>
-            <tr>
-              <th>晶片</th>
-              <td>A19</td>
-              <td>A19</td>
-              <td>A19 Pro</td>
-              <td>A20 Pro (2nm)</td>
-              <td>A20 Pro (2nm)</td>
-            </tr>
-            <tr>
-              <th>相機</th>
-              <td>4800萬單鏡頭</td>
-              <td>4800萬雙鏡頭</td>
-              <td>4800萬單鏡頭</td>
-              <td>三鏡頭 (物理可變光圈)</td>
-              <td>三鏡頭 (物理可變光圈)</td>
-            </tr>
-            <tr>
-              <th>起售價</th>
-              <td class="mono">NT$21,900</td>
-              <td class="mono">NT$29,900</td>
-              <td class="mono">NT$36,900</td>
-              <td class="mono">NT$44,900</td>
-              <td class="mono">NT$49,900</td>
             </tr>
           </tbody>
         </table>
