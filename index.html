@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iPhone 17 系列、18 Pro、18 Pro Max 系列規格導覽</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#141416;
+    --paper:#F4F4F2;
+    --paper-2:#ffffff;
+    --muted:#6C6C72;
+    --line: rgba(20,20,22,0.10);
+
+    --c17:#C7BFE0;
+    --e17:#F2C9D6;
+    --air:#A9CBE8;
+    --pro:#8C3A4A;
+    --promax:#AFD3E0;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Noto Sans TC',-apple-system,BlinkMacSystemFont,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .display{font-family:'Noto Sans TC',-apple-system,BlinkMacSystemFont,sans-serif;}
+
+  a{color:inherit; text-decoration:none;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    max-width:880px; margin:0 auto;
+    padding:48px 20px 28px;
+  }
+  .hero .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--muted); margin-bottom:12px;
+  }
+  .hero h1{
+    font-weight:900;
+    font-size:clamp(28px, 5vw, 46px);
+    line-height:1.2;
+    letter-spacing:-0.01em;
+  }
+  .hero p.lead{
+    margin-top:14px;
+    font-size:15px; line-height:1.65; color:#3c3c40;
+  }
+
+  /* ---------- Accordion List Container (長條式索引表單) ---------- */
+  .accordion-container{
+    max-width:880px;
+    margin:0 auto 60px;
+    padding:0 20px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .accordion-item{
+    scroll-margin-top: 16px;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:var(--paper-2);
+    overflow:hidden;
+    box-shadow:0 2px 6px rgba(0,0,0,0.02);
+    transition:box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .accordion-item:hover{
+    border-color:rgba(20,20,22,0.25);
+    box-shadow:0 4px 12px rgba(0,0,0,0.05);
+  }
+  .accordion-item.open{
+    border-color:var(--ink);
+    box-shadow:0 8px 24px rgba(0,0,0,0.08);
+  }
+
+  /* 長條式按鈕標題 */
+  .accordion-header{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 20px;
+    background:transparent;
+    border:none;
+    cursor:pointer;
+    font-family:inherit;
+    text-align:left;
+    transition:background 0.2s ease;
+  }
+  .accordion-header:hover{background:rgba(0,0,0,0.015);}
+  .accordion-item.open .accordion-header{
+    border-bottom:1px solid var(--line);
+    background:#fafafa;
+  }
+
+  .header-left{
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .header-swatch{
+    width:22px; height:22px; border-radius:50%;
+    flex-shrink:0;
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,0.15);
+  }
+  .header-titles{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .header-name{
+    font-size:18px; font-weight:700; color:var(--ink);
+  }
+  .header-desc{
+    font-size:13.5px; color:var(--muted); font-weight:500;
+  }
+
+  .header-right{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .header-tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    padding:3px 8px;
+    border-radius:6px;
+    background:var(--paper);
+    color:var(--muted);
+  }
+  .chevron-icon{
+    font-size:12px;
+    color:var(--muted);
+    transition:transform 0.25s ease;
+    display:inline-block;
+  }
+  .accordion-item.open .chevron-icon{
+    transform:rotate(180deg);
+    color:var(--ink);
+  }
+
+  /* 展開內容容器 */
+  .accordion-content{
+    display:none;
+    padding:24px 20px;
+    animation:fadeIn 0.25s ease-out;
+  }
+  .accordion-item.open .accordion-content{
+    display:block;
+  }
+  @keyframes fadeIn{from{opacity:0; transform:translateY(-4px);} to{opacity:1; transform:translateY(0);}}
+
+  /* ---------- Model Detail Components ---------- */
+  .model-head{
+    display:flex; align-items:flex-end; justify-content:space-between;
+    flex-wrap:wrap; gap:12px; margin-bottom:20px;
+  }
+  .model-tag{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono',monospace; font-size:12px;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--muted);
+    margin-bottom:6px;
+  }
+  .model-tag .dot{width:8px;height:8px;border-radius:50%;}
+  .model-head h2{font-size:22px; letter-spacing:-0.01em;}
+  .model-head .tagline{font-size:13.5px; color:var(--muted); max-width:400px; text-align:right;}
+
+  .spec-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:12px; overflow:hidden;
+  }
+  .spec-cell{background:#ffffff; padding:16px 14px;}
+  .spec-cell .k{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted);
+    text-transform:uppercase; letter-spacing:0.06em; margin-bottom:5px;
+  }
+  .spec-cell .v{font-size:14.5px; font-weight:600; line-height:1.4;}
+  .spec-cell .v.small{font-size:13px; font-weight:500; color:#333; line-height:1.45;}
+  .spec-cell .delta{
+    display:block; margin-top:5px; color:#2A6DB0; font-weight:600;
+    font-size:11.5px; line-height:1.35;
+  }
+
+  .reason-hero{
+    margin-top:18px;
+    padding:18px 20px;
+    border-radius:12px;
+    background:linear-gradient(155deg, rgba(140,58,74,0.07), rgba(140,58,74,0.02));
+    border-left:4px solid var(--pro);
+  }
+  .reason-hero .rh-title{font-weight:700; font-size:15px; margin-bottom:8px; color:var(--ink);}
+  .reason-hero p{font-size:13.5px; line-height:1.75; color:#333338;}
+  .reason-hero p b{color:var(--ink); font-weight:700;}
+
+  .color-row{margin-top:18px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
+  .color-row .k{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase;}
+  .swatches{display:flex; gap:12px; flex-wrap:wrap;}
+  .swatch{display:flex; flex-direction:column; align-items:center; gap:4px;}
+  .swatch .circle{width:22px; height:22px; border-radius:50%; box-shadow:inset 0 0 0 1px rgba(0,0,0,0.15);}
+  .swatch span{font-size:11px; color:var(--muted);}
+
+  /* Tables */
+  .price-table-wrap{margin-top:20px; overflow-x:auto;}
+  .price-table-title{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; margin-bottom:8px;}
+  .ptable{width:100%; border-collapse:collapse; border:1px solid var(--line); border-radius:12px; overflow:hidden;}
+  .ptable th, .ptable td{padding:12px 14px; text-align:left; border-bottom:1px solid var(--line); font-size:13px;}
+  .ptable thead th{background:var(--paper); font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); font-weight:500;}
+  .ptable tbody tr:last-child td{border-bottom:none;}
+  .ptable tbody tr:nth-child(even) td{background:#fbfbfa;}
+  .ptable td.num{font-family:'IBM Plex Mono',monospace;}
+  .ptable td.strike{color:var(--muted); text-decoration:line-through;}
+  .ptable td.final{font-weight:700; color:var(--ink);}
+  .ptable td.combo{font-weight:700; color:#1c7a3d;}
+  .save-tag{padding:2px 8px; border-radius:999px; font-size:11px; background:#e9f5ec; color:#1c7a3d; font-weight:600;}
+
+  /* Comparison Section */
+  .table-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:12px;}
+  table{width:100%; border-collapse:collapse; min-width:760px;}
+  thead th{padding:12px 14px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; background:var(--paper-2); border-bottom:1px solid var(--line);}
+  tbody th{padding:11px 14px; font-size:12.5px; color:var(--muted); font-weight:500; background:var(--paper-2); border-bottom:1px solid var(--line);}
+  tbody td{padding:11px 14px; font-size:13px; border-bottom:1px solid var(--line); background:#fff;}
+  .th-e17{border-top:3px solid var(--e17);}
+  .th-17{border-top:3px solid var(--c17);}
+  .th-air{border-top:3px solid var(--air);}
+  .th-pro{border-top:3px solid var(--pro);}
+  .th-promax{border-top:3px solid var(--promax);}
+
+  footer{padding:30px 20px 50px; border-top:1px solid var(--line); max-width:880px; margin:0 auto;}
+  footer p{font-size:11.5px; color:var(--muted); line-height:1.75; font-family:'IBM Plex Mono',monospace;}
+
+  @media (max-width: 860px){
+    .spec-grid{grid-template-columns:repeat(2,1fr);}
+    .model-head{flex-direction:column; align-items:flex-start;}
+    .model-head .tagline{text-align:left;}
+  }
+
+  /* ---------- Mobile Optimization ---------- */
+  @media (max-width: 680px){
+    .accordion-header{padding:14px 16px;}
+    .header-name{font-size:16px;}
+    .header-desc{font-size:12px;}
+    .header-tag{display:none;}
+    .accordion-content{padding:18px 14px;}
+
+    .price-table-wrap{overflow-x:visible; margin-top:14px;}
+    .ptable{
+      min-width:0 !important; width:100% !important;
+      background:transparent; border:none;
+    }
+    .ptable thead{display:none;}
+    .ptable tbody{display:flex; flex-direction:column; gap:10px; width:100%;}
+    .ptable tbody tr{
+      display:flex; flex-direction:column;
+      background:#ffffff;
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:10px 12px;
+      box-shadow:0 2px 5px rgba(0,0,0,0.02);
+    }
+    .ptable tbody tr td{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:5px 0 !important;
+      border-bottom:1px dashed rgba(20,20,22,0.08) !important;
+      font-size:12.5px;
+      width:100%;
+      text-align:right;
+    }
+    .ptable tbody tr td:last-child{border-bottom:none !important; padding-top:6px !important;}
+    .ptable tbody tr td:first-child{
+      font-weight:700; font-size:14px; color:var(--ink);
+      border-bottom:1px solid var(--line) !important;
+      padding-bottom:6px !important; margin-bottom:2px;
+    }
+    .ptable tbody tr td::before{
+      content: attr(data-label);
+      font-family:'IBM Plex Mono',monospace;
+      font-size:11px;
+      color:var(--muted);
+      font-weight:500;
+      text-align:left;
+      flex-shrink:0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="eyebrow">APPLE · 2026 系列總覽</div>
+  <h1 class="display">iPhone 17 系列、18 Pro、<br>18 Pro Max 規格導覽</h1>
+  <p class="lead">點擊下方各機型長條表單，即可在下方展開詳細規格與價格試算。</p>
+</header>
+
+<!-- Accordion List (長條式索引表單) -->
+<div class="accordion-container" id="accordionList">
+
+  <!-- Item 1: iPhone 17e -->
+  <div class="accordion-item" id="item-17e">
+    <button class="accordion-header" type="button" aria-expanded="false">
+      <div class="header-left">
+        <span class="header-swatch" style="background:var(--e17)"></span>
+        <div class="header-titles">
+          <span class="header-name">iPhone 17e</span>
+          <span class="header-desc">最實惠的 A19 入門選擇</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <span class="header-tag">NT$21,900 起</span>
+        <span class="chevron-icon">▼</span>
+      </div>
+    </button>
+    <div class="accordion-content">
+      <div class="model-head">
+        <div>
+          <div class="model-tag"><span class="dot" style="background:var(--e17)"></span>00 / 入門款</div>
+          <h2 class="display">iPhone 17e 規格與價格</h2>
+        </div>
+        <p class="tagline">2026 年春季新登場，最實惠的 A19 晶片入門選擇。</p>
+      </div>
+
+      <div class="spec-grid">
+        <div class="spec-cell"><div class="k">螢幕</div><div class="v">6.1" OLED（瀏海設計）</div></div>
+        <div class="spec-cell"><div class="k">更新率</div><div class="v">60Hz</div></div>
+        <div class="spec-cell"><div class="k">晶片</div><div class="v">A19（4 核心 GPU）</div></div>
+        <div class="spec-cell"><div class="k">數據晶片</div><div class="v">Apple C1X</div></div>
+        <div class="spec-cell"><div class="k">相機系統</div><div class="v small">4800萬畫素單鏡頭，2倍光學品質變焦</div></div>
+        <div class="spec-cell"><div class="k">機身結構</div><div class="v small">鋁合金邊框、正面超瓷晶盾 2</div></div>
+        <div class="spec-cell"><div class="k">儲存容量</div><div class="v small">256GB / 512GB</div></div>
+        <div class="spec-cell"><div class="k">充電</div><div class="v small">MagSafe 最高 15W；USB-C</div></div>
+      </div>
+
+      <div class="color-row">
+        <div class="k">配色</div>
+        <div class="swatches">
+          <div class="swatch"><div class="circle" style="background:#F2C9D6"></div><span>嫩粉色</span></div>
+          <div class="swatch"><div class="circle" style="background:#F2F2ED;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.25)"></div><span>白</span></div>
+          <div class="swatch"><div class="circle" style="background:#26262A"></div><span>黑</span></div>
+        </div>
+      </div>
+
+      <div class="price-table-wrap">
+        <div class="price-table-title">各容量價格比較</div>
+        <table class="ptable">
+          <thead>
+            <tr><th>容量</th><th>Apple 原價</th><th>好市多店內價</th><th>聯名卡 2% 後</th><th>+黑鑽卡 2% 疊加後</th><th>共省下</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="容量">256GB</td>
+              <td data-label="Apple 原價" class="num strike">NT$21,900</td>
+              <td data-label="好市多店內價" class="num">NT$21,169</td>
+              <td data-label="聯名卡 2% 後" class="num final">NT$20,746</td>
+              <td data-label="+黑鑽卡 2% 疊加後" class="num combo">NT$20,343</td>
+              <td data-label="共省下"><span class="save-tag">省 NT$1,557</span></td>
+            </tr>
+            <tr>
+              <td data-label="容量">512GB</td>
+              <td data-label="Apple 原價" class="num strike">NT$28,900</td>
+              <td data-label="好市多店內價" class="num">NT$27,935</td>
+              <td data-label="聯名卡 2% 後" class="num final">NT$27,376</td>
+              <td data-label="+黑鑽卡 2% 疊加後" class="num combo">NT$26,844</td>
+              <td data-label="共省下"><span class="save-tag">省 NT$2,056</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item 2: iPhone 17 -->
+  <div class="accordion-item" id="item-17">
+    <button class="accordion-header" type="button" aria-expanded="false">
+      <div class="header-left">
+        <span class="header-swatch" style="background:var(--c17)"></span>
+        <div class="header-titles">
+          <span class="header-name">iPhone 17</span>
+          <span class="header-desc">螢幕升級、容量翻倍標準款</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <span class="header-tag">NT$29,900 起</span>
+        <span class="chevron-icon">▼</span>
+      </div>
+    </button>
+    <div class="accordion-content">
+      <div class="model-head">
+        <div>
+          <div class="model-tag"><span class="dot" style="background:var(--c17)"></span>01 / 標準款</div>
+          <h2 class="display">iPhone 17 規格與價格</h2>
+        </div>
+        <p class="tagline">螢幕升級、容量翻倍，均衡實用的入門首選。</p>
+      </div>
+
+      <div class="spec-grid">
+        <div class="spec-cell"><div class="k">螢幕</div><div class="v">6.3" Super Retina XDR</div></div>
+        <div class="spec-cell"><div class="k">更新率</div><div class="v">ProMotion 120Hz</div></div>
+        <div class="spec-cell"><div class="k">晶片</div><div class="v">A19</div></div>
+        <div class="spec-cell"><div class="k">重量</div><div class="v">177g</div></div>
+        <div class="spec-cell"><div class="k">相機系統</div><div class="v small">4800萬畫素雙鏡頭融合相機，中央前鏡頭</div></div>
+        <div class="spec-cell"><div class="k">機身結構</div><div class="v small">鋁合金一體成型、Ceramic Shield 2</div></div>
+        <div class="spec-cell"><div class="k">儲存容量</div><div class="v small">256GB / 512GB</div></div>
+        <div class="spec-cell"><div class="k">無線充電</div><div class="v small">MagSafe 最高 25W</div></div>
+      </div>
+
+      <div class="color-row">
+        <div class="k">配色</div>
+        <div class="swatches">
+          <div class="swatch"><div class="circle" style="background:#C7BFE0"></div><span>薰衣草紫</span></div>
+          <div class="swatch"><div class="circle" style="background:#B7C9A9"></div><span>鼠尾草綠</span></div>
+          <div class="swatch"><div class="circle" style="background:#AEC2D6"></div><span>霧藍</span></div>
+          <div class="swatch"><div class="circle" style="background:#F2F2ED;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.25)"></div><span>白</span></div>
+          <div class="swatch"><div class="circle" style="background:#26262A"></div><span>黑</span></div>
+        </div>
+      </div>
+
+      <div class="price-table-wrap">
+        <div class="price-table-title">各容量價格比較</div>
+        <table class="ptable">
+          <thead>
+            <tr><th>容量</th><th>Apple 官方原價</th><th>好市多店內價</th><th>聯名卡 2% 回饋後</th><th>+黑鑽卡 2% 疊加後</th><th>共省下</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="容量">256GB</td>
+              <td data-label="官方原價" class="num strike">NT$29,900</td>
+              <td data-label="好市多店內價" class="num">NT$28,899</td>
+              <td data-label="聯名卡 2% 後" class="num final">NT$28,321</td>
+              <td data-label="+黑鑽卡 2% 疊加後" class="num combo">NT$27,771</td>
+              <td data-label="共省下"><span class="save-tag">省 NT$2,129</span></td>
+            </tr>
+            <tr>
+              <td data-label="容量">512GB</td>
+              <td data-label="官方原價" class="num strike">NT$36,900</td>
+              <td data-label="好市多店內價" class="num">NT$35,679</td>
+              <td data-label="聯名卡 2% 後" class="num final">NT$34,965</td>
+              <td data-label="+黑鑽卡 2% 疊加後" class="num combo">NT$34,285</td>
+              <td data-label="共省下"><span class="save-tag">省 NT$2,615</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item 3: iPhone Air -->
+  <div class="accordion-item" id="item-air">
+    <button class="accordion-header" type="button" aria-expanded="false">
+      <div class="header-left">
+        <span class="header-swatch" style="background:var(--air)"></span>
+        <div class="header-titles">
+          <span class="header-name">iPhone Air</span>
+          <span class="header-desc">史上最薄 5.6mm 鈦金屬輕薄款</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <span class="header-tag">NT$36,900 起</span>
+        <span class="chevron-icon">▼</span>
+      </div>
+    </button>
+    <div class="accordion-content">
+      <div class="model-head">
+        <div>
+          <div class="model-tag"><span class="dot" style="background:var(--air)"></span>02 / 輕薄款</div>
+          <h2 class="display">iPhone Air 規格與價格</h2>
+        </div>
+        <p class="tagline">史上最薄 5.6mm，取代 Plus 機型的全新定位。</p>
+      </div>
+
+      <div class="spec-grid">
+        <div class="spec-cell"><div class="k">螢幕</div><div class="v">6.5" Super Retina XDR</div></div>
+        <div class="spec-cell"><div class="k">更新率</div><div class="v">ProMotion 120Hz</div></div>
+        <div class="spec-cell"><div class="k">晶片</div><div class="v">A19 Pro</div></div>
+        <div class="spec-cell"><div class="k">厚度／重量</div><div class="v">5.6mm / 165g</div></div>
+        <div class="spec-cell"><div class="k">相機系統</div><div class="v small">4800萬畫素單主鏡頭 + 1800萬畫素居中前鏡頭</div></div>
+        <div class="spec-cell"><div class="k">機身結構</div><div class="v small">5級鈦金屬邊框、超瓷晶盾背板</div></div>
+        <div class="spec-cell"><div class="k">儲存容量</div><div class="v small">256GB / 512GB / 1TB</div></div>
+        <div class="spec-cell"><div class="k">無線充電</div><div class="v small">MagSafe 最高 20W</div></div>
+      </div>
+
+      <div class="color-row">
+        <div class="k">配色</div>
+        <div class="swatches">
+          <div class="swatch"><div class="circle" style="background:#A9CBE8"></div><span>天藍</span></div>
+          <div class="swatch"><div class="circle" style="background:#E4CFA0"></div><span>淺金</span></div>
+          <div class="swatch"><div class="circle" style="background:#F2F2ED;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.25)"></div><span>雲白</span></div>
+          <div class="swatch"><div class="circle" style="background:#1E1E22"></div><span>太空黑</span></div>
+        </div>
+      </div>
+
+      <div class="price-table-wrap">
+        <div class="price-table-title">各容量價格比較</div>
+        <table class="ptable">
+          <thead>
+            <tr><th>容量</th><th>Apple 官方原價</th><th>好市多店內價</th><th>聯名卡 2% 回饋後</th><th>+黑鑽卡 2% 疊加後</th><th>共省下</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="容量">256GB</td>
+              <td data-label="官方原價" class="num strike">NT$36,900</td>
+              <td data-label="好市多店內價" class="num">NT$35,679</td>
+              <td data-label="聯名卡 2% 後" class="num final">NT$34,965</td>
+              <td data-label="+黑鑽卡 2% 疊加後" class="num combo">NT$34,285</td>
+              <td data-label="共省下"><span class="save-tag">省 NT$2,615</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item 4: iPhone 18 Pro -->
+  <div class="accordion-item" id="item-pro">
+    <button class="accordion-header" type="button" aria-expanded="false">
+      <div class="header-left">
+        <span class="header-swatch" style="background:var(--pro)"></span>
+        <div class="header-titles">
+          <span class="header-name">iPhone 18 Pro</span>
+          <span class="header-desc">2nm A20 Pro 物理可變光圈</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <span class="header-tag">NT$44,900 起</span>
+        <span class="chevron-icon">▼</span>
+      </div>
+    </button>
+    <div class="accordion-content">
+      <div class="model-head">
+        <div>
+          <div class="model-tag"><span class="dot" style="background:var(--pro)"></span>03 / 專業款 · 2026 新機</div>
+          <h2 class="display">iPhone 18 Pro 規格與特色</h2>
+        </div>
+        <p class="tagline">首款搭載物理可變光圈相機的 iPhone，效能與拍照全面躍進。</p>
+      </div>
+
+      <div class="spec-grid">
+        <div class="spec-cell"><div class="k">螢幕</div><div class="v">6.3" Super Retina XDR</div></div>
+        <div class="spec-cell"><div class="k">更新率</div><div class="v">ProMotion 120Hz</div><div class="delta">動態島縮小約35%，可顯示3項即時動態</div></div>
+        <div class="spec-cell"><div class="k">晶片</div><div class="v">A20 Pro（2nm）</div><div class="delta">比 17 Pro：GPU 效能 +40%</div></div>
+        <div class="spec-cell"><div class="k">重量</div><div class="v">211g</div><div class="delta">均熱板與散熱系統加強</div></div>
+        <div class="spec-cell"><div class="k">相機系統</div><div class="v small">三鏡頭 4800萬畫素，物理可變光圈 f/1.48–f/4，8倍光學變焦</div><div class="delta">大光圈夜拍、縮光圈高銳利度</div></div>
+        <div class="spec-cell">
+          <div class="k">機身結構</div>
+          <div class="v small">鋁合金一體成型、超瓷晶盾背板</div>
+          <div class="delta">VC均熱板是上一代的 3 倍面積，持續效能可提升 40%</div>
+        </div>
+        <div class="spec-cell"><div class="k">儲存容量</div><div class="v small">256GB / 512GB / 1TB / 2TB</div><div class="delta">首度提供 2TB 規格</div></div>
+        <div class="spec-cell"><div class="k">電池／續航</div><div class="v small">影片播放最長 36 小時；15分鐘充至50%</div><div class="delta">續航提升 +8 小時</div></div>
+      </div>
+
+      <div class="color-row">
+        <div class="k">配色</div>
+        <div class="swatches">
+          <div class="swatch"><div class="circle" style="background:#8C3A4A"></div><span>勃根地紅</span></div>
+          <div class="swatch"><div class="circle" style="background:#AFD3E0"></div><span>冰川藍</span></div>
+          <div class="swatch"><div class="circle" style="background:#C9CBCD"></div><span>銀色</span></div>
+          <div class="swatch"><div class="circle" style="background:#1E1E22"></div><span>黑色</span></div>
+        </div>
+      </div>
+
+      <div class="reason-hero">
+        <div class="rh-title">升級的理由（對比 iPhone 17 Pro 與舊機）</div>
+        <p>
+          <b>1. 新一代均熱板散熱（VC）大升級</b>：相較於 17 Pro 在長時間高負載錄影、3A 遊戲或 4K/8K 剪輯時容易因發熱而降頻降亮度，18 Pro 導入<b>全新加大 Vapor Chamber 均熱板散熱架構</b>，導熱效率大幅提升，能讓晶片更長時間維持滿血效能輸出、機身溫控更均勻不燙手。<br>
+          <b>2. 2nm 製程 A20 Pro</b>：GPU 效能比 17 Pro 躍升 <b>+40%</b>，功耗更低，搭配散熱板釋放極限效能。<br>
+          <b>3. 首搭「物理可變光圈」</b>：f/1.48–f/4 自由調節，暗光進光量更大、日間成像更銳利，並支援最高 8 倍光學品質變焦。<br>
+          <b>4. 續航與動態島</b>：續航延長 8 小時（達 36 小時），動態島面積縮小約 35%。
+        </p>
+      </div>
+
+      <div class="price-table-wrap">
+        <div class="price-table-title">各容量價格比較</div>
+        <table class="ptable">
+          <thead>
+            <tr><th>容量</th><th>Apple 官方原價</th><th>好市多店內價</th><th>聯名卡 2% 回饋後</th><th>+黑鑽卡 2% 疊加後</th><th>共省下</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="容量">256GB</td>
+              <td data-label="官方原價" class="num strike">NT$44,900</td>
+              <td data-label="好市多店內價" class="num">NT$43,399</td>
+              <td data-label="聯名卡 2% 後" class="num final">NT$42,531</td>
+              <td data-label="+黑鑽卡 2% 疊加後" class="num combo">NT$41,704</td>
+              <td data-label="共省下"><span class="save-tag">省 NT$3,196</span></td>
+            </tr>
+            <tr>
+              <td data-label="容量">512GB</td>
+              <td data-label="官方原價" class="num strike">NT$51,900</td>
+              <td data-label="好市多店內價" class="num">NT$50,149</td>
+              <td data-label="聯名卡 2% 後" class="num final">NT$49,146</td>
+              <td data-label="+黑鑽卡 2% 疊加後" class="num combo">NT$48,191</td>
+              <td data-label="共省下"><span class="save-tag">省 NT$3,709</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item 5: iPhone 18 Pro Max -->
+  <div class="accordion-item" id="item-promax">
+    <button class="accordion-header" type="button" aria-expanded="false">
+      <div class="header-left">
+        <span class="header-swatch" style="background:var(--promax)"></span>
+        <div class="header-titles">
+          <span class="header-name">iPhone 18 Pro Max</span>
+          <span class="header-desc">續航最強 6.9 吋旗艦王者</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <span class="header-tag">NT$49,900 起</span>
+        <span class="chevron-icon">▼</span>
+      </div>
+    </button>
+    <div class="accordion-content">
+      <div class="model-head">
+        <div>
+          <div class="model-tag"><span class="dot" style="background:var(--promax)"></span>04 / 旗艦款 · 2026 新機</div>
+          <h2 class="display">iPhone 18 Pro Max 規格與特色</h2>
+        </div>
+        <p class="tagline">系列最長續航、最大電池，長時間錄影與重度使用的首選。</p>
+      </div>
+
+      <div class="spec-grid">
+        <div class="spec-cell"><div class="k">螢幕</div><div class="v">6.9" Super Retina XDR</div></div>
+        <div class="spec-cell"><div class="k">更新率</div><div class="v">ProMotion 120Hz</div><div class="delta">動態島縮小約35%，可顯示3項即時動態</div></div>
+        <div class="spec-cell"><div class="k">晶片</div><div class="v">A20 Pro（2nm）</div><div class="delta">比 17 Pro Max：GPU 效能 +40%</div></div>
+        <div class="spec-cell"><div class="k">重量</div><div class="v">249g</div><div class="delta">電池容量與均熱板全面加大</div></div>
+        <div class="spec-cell"><div class="k">相機系統</div><div class="v small">三鏡頭 4800萬畫素，物理可變光圈 f/1.48–f/4，8倍光學變焦</div><div class="delta">望遠與夜拍旗艦級表現</div></div>
+        <div class="spec-cell">
+          <div class="k">機身結構</div>
+          <div class="v small">鋁合金一體成型、超瓷晶盾背板</div>
+          <div class="delta">VC均熱板是上一代的 3 倍面積，持續效能可提升 40%</div>
+        </div>
+        <div class="spec-cell"><div class="k">儲存容量</div><div class="v small">256GB / 512GB / 1TB / 2TB</div><div class="delta">首度與 Pro 同步提供 2TB 選項</div></div>
+        <div class="spec-cell"><div class="k">電池／續航</div><div class="v small">影片播放最長 43 小時；15分鐘充至50%</div><div class="delta">續航提升 +6 小時（達43小時）</div></div>
+      </div>
+
+      <div class="color-row">
+        <div class="k">配色</div>
+        <div class="swatches">
+          <div class="swatch"><div class="circle" style="background:#8C3A4A"></div><span>勃根地紅</span></div>
+          <div class="swatch"><div class="circle" style="background:#AFD3E0"></div><span>冰川藍</span></div>
+          <div class="swatch"><div class="circle" style="background:#C9CBCD"></div><span>銀色</span></div>
+          <div class="swatch"><div class="circle" style="background:#1E1E22"></div><span>黑色</span></div>
+        </div>
+      </div>
+
+      <div class="reason-hero">
+        <div class="rh-title">升級的理由（對比 iPhone 17 Pro Max 與舊機）</div>
+        <p>
+          <b>1. 全機身超大面積均熱板（VC）</b>：相比 17 Pro Max 在戶外高溫長時間錄製 ProRes 影片或開最高畫質玩重度遊戲時容易發燙降幀，18 Pro Max 配備<b>旗艦級大面積均熱板</b>，熱量快速向外導散，實現極度穩定的持續峰值效能，不再出現過熱掉幀。<br>
+          <b>2. 系列最長 43 小時續航</b>：電池容量再度提升，續航比 17 Pro Max 增加整整 6 小時。<br>
+          <b>3. 2nm A20 Pro 晶片 + 物理可變光圈</b>：2nm 極致能效與自由光圈調節，搭配 8 倍長焦變焦，徹底告別戶外創作的電量與發熱焦慮。
+        </p>
+      </div>
+
+      <div class="price-table-wrap">
+        <div class="price-table-title">各容量價格比較</div>
+        <table class="ptable">
+          <thead>
+            <tr><th>容量</th><th>Apple 官方原價</th><th>好市多店內價</th><th>聯名卡 2% 回饋後</th><th>+黑鑽卡 2% 疊加後</th><th>共省下</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="容量">256GB</td>
+              <td data-label="官方原價" class="num strike">NT$49,900</td>
+              <td data-label="好市多店內價" class="num">NT$48,249</td>
+              <td data-label="聯名卡 2% 後" class="num final">NT$47,284</td>
+              <td data-label="+黑鑽卡 2% 疊加後" class="num combo">NT$46,365</td>
+              <td data-label="共省下"><span class="save-tag">省 NT$3,535</span></td>
+            </tr>
+            <tr>
+              <td data-label="容量">512GB</td>
+              <td data-label="官方原價" class="num strike">NT$56,900</td>
+              <td data-label="好市多店內價" class="num">NT$54,949</td>
+              <td data-label="聯名卡 2% 後" class="num final">NT$53,850</td>
+              <td data-label="+黑鑽卡 2% 疊加後" class="num combo">NT$52,804</td>
+              <td data-label="共省下"><span class="save-tag">省 NT$4,096</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item 6: Comparison Table -->
+  <div class="accordion-item" id="item-compare">
+    <button class="accordion-header" type="button" aria-expanded="false">
+      <div class="header-left">
+        <span class="header-swatch" style="background:#888;"></span>
+        <div class="header-titles">
+          <span class="header-name">全陣容規格比較表</span>
+          <span class="header-desc">五款機型橫向完整參數對比</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <span class="header-tag">五款對比</span>
+        <span class="chevron-icon">▼</span>
+      </div>
+    </button>
+    <div class="accordion-content">
+      <div class="model-head">
+        <div>
+          <div class="model-tag"><span class="dot" style="background:#888;"></span>全陣容橫向比對</div>
+          <h2 class="display">五款機型完整規格比較</h2>
+        </div>
+        <p class="tagline">官方建議售價與核心硬體規格彙整。</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th class="th-e17">iPhone 17e</th>
+              <th class="th-17">iPhone 17</th>
+              <th class="th-air">iPhone Air</th>
+              <th class="th-pro">iPhone 18 Pro</th>
+              <th class="th-promax">iPhone 18 Pro Max</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>螢幕尺寸</th>
+              <td class="mono">6.1"</td>
+              <td class="mono">6.3"</td>
+              <td class="mono">6.5"</td>
+              <td class="mono">6.3"</td>
+              <td class="mono">6.9"</td>
+            </tr>
+            <tr>
+              <th>更新率</th>
+              <td class="mono">60Hz</td>
+              <td class="mono">120Hz</td>
+              <td class="mono">120Hz</td>
+              <td class="mono">120Hz (動態島縮小)</td>
+              <td class="mono">120Hz (動態島縮小)</td>
+            </tr>
+            <tr>
+              <th>晶片</th>
+              <td>A19</td>
+              <td>A19</td>
+              <td>A19 Pro</td>
+              <td>A20 Pro (2nm)</td>
+              <td>A20 Pro (2nm)</td>
+            </tr>
+            <tr>
+              <th>相機</th>
+              <td>4800萬單鏡頭</td>
+              <td>4800萬雙鏡頭</td>
+              <td>4800萬單鏡頭</td>
+              <td>三鏡頭 (物理可變光圈)</td>
+              <td>三鏡頭 (物理可變光圈)</td>
+            </tr>
+            <tr>
+              <th>起售價</th>
+              <td class="mono">NT$21,900</td>
+              <td class="mono">NT$29,900</td>
+              <td class="mono">NT$36,900</td>
+              <td class="mono">NT$44,900</td>
+              <td class="mono">NT$49,900</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>本規格與價格資訊僅供參考，實際上市細節依 Apple 官方公布為準。</p>
+</footer>
+
+<script>
+  // Accordion Interaction: Click header to toggle content, push remaining down & auto scroll
+  const items = document.querySelectorAll('.accordion-item');
+
+  items.forEach(item => {
+    const header = item.querySelector('.accordion-header');
+    header.addEventListener('click', () => {
+      const isCurrentlyOpen = item.classList.contains('open');
+
+      // 手風琴互斥效果：點擊時收合其他項
+      items.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove('open');
+          otherItem.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // 切換當前項目
+      const willOpen = !isCurrentlyOpen;
+      item.classList.toggle('open', willOpen);
+      header.setAttribute('aria-expanded', willOpen);
+
+      // 當展開時：無論電腦或手機，皆精準平滑滾動至螢幕上方頂端
+      if (willOpen) {
+        setTimeout(() => {
+          item.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest'
+          });
+        }, 120);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
